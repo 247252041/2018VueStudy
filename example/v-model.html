@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-Model实例</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h1>V-Model实例</h1>
+    <hr>
+    <div id="app">
+
+        <p>原始文本信息: {{message}}
+            <br/>
+            <h3>文本框</h3>
+           v-model:        <input v-model="message" type="text"><br/>
+           v-model.lazy:   <input v-model.lazy="message" type="text"><br/>
+           v-model.number  <input v-model.number="message" type="text"><br/>
+           v-model.trim  <input v-model.trim="message" type="text"><br/>
+           <hr>
+           <h3>文本域</h3>
+           <textarea cols="30" rows="10" v-model="message"></textarea>
+           <hr>
+           <h3>多选框绑定数组</h3>
+           <input type="checkbox" id="isTrue" v-model="isTrue">
+           <label for="isTrue">{{isTrue}}</label>
+           <hr>
+           <p>
+               <input type="checkbox" id="jspang" value="jspang" v-model="web_names">
+               <label for="jspang">jspang</label>
+               <input type="checkbox" id="xiaohong" value="xiaohong" v-model="web_names">
+               <label for="jspang">xiaohong</label>
+               <input type="checkbox" id="xiaoming" value="xiaoming" v-model="web_names">
+               <label for="jspang">xiaoming</label>
+           </p>
+        <p>
+            {{web_names}}
+        </p>
+        <hr>
+        <h3>单选框的绑定</h3>
+        <input type="radio" id="one" value="男" v-model="gender">
+        <label for="one">男</label>
+        <input type="radio" id="two" value="女" v-model="gender">
+        <label for="two">女</label>
+
+        <p>您选择的性别是: {{gender}}</p>
+
+        </p>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: 'Hello Vue!',
+                number: 0,
+                isTrue:true,
+                web_names: [],
+                gender:'男'
+            }
+        });
+    </script>
+</body>
+
+</html>
