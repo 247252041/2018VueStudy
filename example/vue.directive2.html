@@ -4,24 +4,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HelloWord</title>
+    <title>Vue.directive 自定义指令</title>
     <script src="../assets/js/vue.js"></script>
 </head>
 
 <body>
-    <h1>HelloWorld</h1>
+    <h1>Vue.directive 自定义指令</h1>
     <hr>
+
     <div id="app">
-        {{message}}
+        <div v-yss="color">{{numb}}</div>
+        <p>
+            <button @click="add">增加</button>
+        </p>
     </div>
+
+    <button onclick="unbind()">解绑</button>
+
+    <p>
+            出现过的错误: <br>
+             <ol>
+                <li>颜色需要加上引号</li>
+                <li>Vue.directive 多了个 s</li>
+
+             </ol>
+
+    </p> 
+
+
+
     <script>
+
+        function unbind(){
+            //解绑
+            app.$destroy();
+        }
+
+        //定义 v-yss
+        Vue.directive("yss",{
+            bind:function(el,binding){
+
+                //被绑定 时调用
+                console.log("1.bind")
+                el.style = "color:"+binding.value;
+            },
+            inserted:function(){
+                //绑定到节点
+                console.log("2.inserted")
+            },
+            update: function(){
+                //组件更新
+                console.log("3.update")
+            },
+            componentUpdated :function(){
+                //组件更新完成
+                console.log("4.componentUpdated")
+            },
+            unbind: function(){
+                // 解绑
+                console.log("5. unbind")
+            }
+        });
+
+
         var app = new Vue({
-            el: "#app",
+            el: '#app',
             data: {
-                message: 'Hello Vue!'
+                numb: 10,
+                color: 'red'
+            },
+            methods: {
+                add: function () {
+                    this.numb++;
+                }
             }
         });
     </script>
+
 </body>
 
 </html>

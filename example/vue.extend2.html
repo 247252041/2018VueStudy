@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.extend 扩展实例构造器</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h1>Vue.extend 扩展实例构造器</h1>
+    <hr>
+    <author></author>
+    <div id="author"></div>
+    
+    <script>
+       var autherExtend = Vue.extend({
+           //template 模版
+            template:"<p><a :href='authorUrl'>{{authorName}}</a></p>",
+            // data 函数的返回赋值到data
+            data:function(){
+                return{
+                    authorName:"jsPang的网站",
+                    authorUrl :"http://jspang.com"
+                }
+            }
+       });
+
+       //加载构造器
+       new autherExtend().$mount('author');
+       new autherExtend().$mount('#author');
+       
+
+
+    </script>
+</body>
+
+</html>
