@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>component 初识组件</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h1>component 初识组件</h1>
+    <hr>
+    <div id="app">
+        <panda from-here="中国"></panda>
+    </div>
+   
+
+    <script>
+
+    
+        var app = new Vue({
+            el: "#app",
+            components: {
+                "panda":{
+                    template:`<p style="color:red"> 局部的panda from{{fromHhere}}组件 </p>`,
+                    //属性
+                    props: ['fromHere']
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

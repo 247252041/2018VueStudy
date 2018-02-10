@@ -13,26 +13,23 @@
     <hr>
     <author></author>
     <div id="author"></div>
-    
+
     <script>
-       var autherExtend = Vue.extend({
-           //template 模版
-            template:"<p><a :href='authorUrl'>{{authorName}}</a></p>",
+        var autherExtend = Vue.extend({
+            //template 模版
+            template: "<p><a :href='authorUrl'>{{authorName}}</a></p>",
             // data 函数的返回赋值到data
-            data:function(){
-                return{
-                    authorName:"jsPang的网站",
-                    authorUrl :"http://jspang.com"
+            data: function () {
+                return {
+                    authorName: "jsPang的网站",
+                    authorUrl: "http://jspang.com"
                 }
             }
-       });
+        });
 
-       //加载构造器
-       new autherExtend().$mount('author');
-       new autherExtend().$mount('#author');
-       
-
-
+        //加载构造器
+        new autherExtend().$mount('author');
+        new autherExtend().$mount('#author');
     </script>
 </body>
 
