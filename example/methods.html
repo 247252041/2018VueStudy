@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelloWord</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h1>HelloWorld</h1>
+    <hr>
+    <div id="app">
+        {{ a }}
+        <p>
+            <button @click="add(2)">add</button>
+        </p>
+        <p>
+            <btn @click.native="add(2)"></btn>
+        </p>
+    </div>
+
+    <button onclick="app.add(3)">外部调用</button>
+    <script>
+        var btn = {
+            template: `<button>组件add</button>`
+        }
+
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: 'Hello Vue!',
+                a: 1
+            },
+            components: {
+                "btn": btn
+            },
+            methods: {
+                add: function (num) {
+                    if (num != '') {
+                        this.a += num;
+                    } else {
+                        this.a++;
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

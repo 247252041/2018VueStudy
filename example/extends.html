@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mixins Option</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h1>Mixins Option</h1>
+    <hr>
+    <div id="app">
+        ${ num )
+        <p><button @click="add()">Add</button></p>
+    </div>
+    <script>
+
+        var extendObj ={
+            updated:function(){
+                console.log('我是扩展的update');
+            },  methods: {
+                add:function () { 
+                    console.log('我是扩展的方法');
+                    this.num+=2;
+                 }
+                
+            }
+        }
+
+     
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: 'Hello Vue!',
+                num:0
+            },
+            methods: {
+                add:function () { 
+                    console.log('我是原生的方法');
+                    this.num++;
+                 }
+                
+            },
+            updated:function(){
+                console.log('原生update')
+            },
+            extends:extendObj,
+            delimiters:['${',')']
+        });
+       
+    </script>
+</body>
+
+</html>

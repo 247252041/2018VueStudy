@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example Methods Demo</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h1>example Methods Demo</h1>
+    <hr>
+    <div id="app">
+    </div>
+    <button onclick="destory()">销毁</button>
+    <button onclick="reload()">刷新</button>
+    <script>
+       var yss = Vue.extend({
+           template:`<p>{{message}}</p>`,
+           data: function(){
+               return{
+                   message:'hello , World!'
+               }
+           },
+           mounted:function(){
+               console.log('挂载被创建');
+           },
+           destroyed:function(){
+               console.log('destory被调用');
+           },
+           updated:function(){
+               console.log('update 更新之后');
+           }
+       });
+       var vm = new yss().$mount('#app');
+
+       function destory(){
+           vm.$destroy();
+       }
+
+       function reload(){
+           vm.$forceUpdate();
+       }
+    </script>
+</body>
+
+</html>
